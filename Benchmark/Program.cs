@@ -38,9 +38,20 @@ namespace Benchmark
 
             for (int i = 0; i < BechmarkClass.myArray.Length; i++)
             {
-                BechmarkClass.myArray[i] = random.Next(100);
+                BechmarkClass.myArray[i] = random.Next(1000);
                 //Console.WriteLine(BechmarkClass.myArray[i]);
             }
+
+            for (int i = 0; i < BechmarkClass.floatArray.Length; i++)
+            {
+                BechmarkClass.floatArray[i] = (float)random.NextDouble();
+            }
+
+            for (int i = 0; i < BechmarkClass.floatArray.Length; i++)
+            {
+                BechmarkClass.doubleArray[i] = random.NextDouble();
+            }
+
 
             //Для проверки (себя)
             //for (int i = 0; i <= 3; i++)
@@ -61,6 +72,8 @@ namespace Benchmark
     {
         public static int n = 50;
         public static int[] myArray = new int[n];
+        public static float[] floatArray = new float[n];
+        public static double[] doubleArray = new double[n];
         public static float PointDistanceClass(PointClassFloat pointOne, PointClassFloat pointTwo)
         {
             float x = pointOne.X - pointTwo.X;
@@ -96,8 +109,10 @@ namespace Benchmark
 
             for (int i = 0; i <= 5; i++)
             {
-                var pointOneFloat = new PointClassFloat() { X = myArray[i], Y = myArray[i + 1] };
-                var pointTwoFloat = new PointClassFloat() { X = myArray[i + 2], Y = myArray[i + 3] };
+                //var pointOneFloat = new PointClassFloat() { X = myArray[i], Y = myArray[i + 1] };
+                //var pointTwoFloat = new PointClassFloat() { X = myArray[i + 2], Y = myArray[i + 3] };
+                var pointOneFloat = new PointClassFloat() { X = floatArray[i], Y = floatArray[i + 1] };
+                var pointTwoFloat = new PointClassFloat() { X = floatArray[i + 2], Y = floatArray[i + 3] };
                 PointDistanceClass(pointOneFloat, pointTwoFloat);
             }
 
@@ -109,8 +124,10 @@ namespace Benchmark
 
             for (int i = 0; i <= 5; i++)
             {
-                var pointOneFloat = new PointStructFloat() { X = myArray[i], Y = myArray[i + 1] };
-                var pointTwoFloat = new PointStructFloat() { X = myArray[i + 2], Y = myArray[i + 3] };
+                //var pointOneFloat = new PointStructFloat() { X = myArray[i], Y = myArray[i + 1] };
+                //var pointTwoFloat = new PointStructFloat() { X = myArray[i + 2], Y = myArray[i + 3] };
+                var pointOneFloat = new PointStructFloat() { X = floatArray[i], Y = floatArray[i + 1] };
+                var pointTwoFloat = new PointStructFloat() { X = floatArray[i + 2], Y = floatArray[i + 3] };
                 PointDistanceStruct(pointOneFloat, pointTwoFloat);
             }
         }
@@ -121,8 +138,10 @@ namespace Benchmark
 
             for (int i = 0; i <= 5; i++)
             {
-                var pointOneDouble = new PointStructDouble() { X = myArray[i], Y = myArray[i + 1] };
-                var pointTwoDouble = new PointStructDouble() { X = myArray[i + 2], Y = myArray[i + 3] };
+                //var pointOneDouble = new PointStructDouble() { X = myArray[i], Y = myArray[i + 1] };
+                //var pointTwoDouble = new PointStructDouble() { X = myArray[i + 2], Y = myArray[i + 3] };
+                var pointOneDouble = new PointStructDouble() { X = doubleArray[i], Y = doubleArray[i + 1] };
+                var pointTwoDouble = new PointStructDouble() { X = doubleArray[i + 2], Y = doubleArray[i + 3] };
                 PointDistanceDouble(pointOneDouble, pointTwoDouble);
             }
 
@@ -134,8 +153,10 @@ namespace Benchmark
         {
             for (int i = 0; i <= 5; i++)
             {
-                var pointOneFloat = new PointStructFloatWithoutSqrt() { X = myArray[i], Y = myArray[i + 1] };
-                var pointTwoFloat = new PointStructFloatWithoutSqrt() { X = myArray[i + 2], Y = myArray[i + 3] };
+                //var pointOneFloat = new PointStructFloatWithoutSqrt() { X = myArray[i], Y = myArray[i + 1] };
+                //var pointTwoFloat = new PointStructFloatWithoutSqrt() { X = myArray[i + 2], Y = myArray[i + 3] };
+                var pointOneFloat = new PointStructFloatWithoutSqrt() { X = floatArray[i], Y = floatArray[i + 1] };
+                var pointTwoFloat = new PointStructFloatWithoutSqrt() { X = floatArray[i + 2], Y = floatArray[i + 3] };
                 PointDistanceWithoutSqrt(pointOneFloat, pointTwoFloat);
             }
         }
